@@ -21,5 +21,5 @@ class Registro:
 
   def save_signal(self):
     signal = Signal(self.signal_fields,self.idP,self.idS,self.new_patient)
-    np.savetxt(f'Signals/{self.idP}_{self.idS}.txt', self.signal, fmt='%f')
+    np.savetxt(f'Signal/{self.idP}_{self.idS}.txt', self.signal, fmt='%f')
     signal.savedados()

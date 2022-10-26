@@ -10,6 +10,6 @@ class Signal(Infos):
   def savedados(self):
     self.record_info['idP'] = self.idP
     self.record_info['idS'] = self.idS
-    self.record_info['data_path'] = 'Signals/'+str(self.idP)+'_'+str(self.idS)+'.txt'
+    self.record_info['data_path'] = 'Signal/'+str(self.idP)+'_'+str(self.idS)+'.txt'
     k = SaveData(self.record_info,self.csv)
     k.save()

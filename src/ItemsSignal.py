@@ -34,7 +34,7 @@ class ItemsSignal:
     '''
     This method returns the array of the record
     '''
-    path = '/content/drive/MyDrive/Projeto-Tecnicas/Signals/'+ self.idP + '_'+ self.idS + '.txt'
+    path = 'Signals/'+ self.idP + '_'+ self.idS + '.txt'
     return np.loadtxt(path)
 
   def take_time(self):

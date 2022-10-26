@@ -37,7 +37,7 @@ class Visualization:
 
     fig.show()
   
-  def Plot_Distribution(self,column):
+  def table_Distribution(self,column):
     '''
     This method returns a table of a column from dataframe
 
@@ -45,6 +45,18 @@ class Visualization:
         * name of column (string) 
     '''
     return pd.DataFrame(self.base[column].value_counts())
+  
+  def table_pacient_data(self,issue,parameter = None,data= None):
+    '''
+    This method returns a Dataframe pacients with different issues
+
+     INPUT
+        *issue(string): The issue in column Reason for admission
+    '''
+    if data is None:
+      return self.base[self.base['Reason for admission'] == issue]
+    else:
+      return self.base[(self.base['Reason for admission'] == issue) & (self.base[data] == parameter)]
 
   def plot_signal(self,Type):
       '''
@@ -103,4 +115,17 @@ class Visualization:
       vz = signal[:,14]
       df = pd.DataFrame({"x": vx, "y":vy, "z":vz})
       fig = px.line_3d(df,x ='x',y = 'y',z = 'z',title = "Record vectorcardiogram " + str(self.idS) + ' Pacient ' + str(self.idP))
-      fig.show()
+      return fig
+
+  def plot_hist(self,classes):
+    '''
+      This method returns the time record distribution for all pacients issues in a histogram plot
+    '''
+    dictionary = Json("classes_times.json").load_json()
+    X = dictionary[classes]
+    plt.hist(X)
+    plt.title(f'Time record distribution for the issue {classes}')
+    plt.xlabel('Time (s)')
+    plt.tight_layout()
+    plt.show()
+

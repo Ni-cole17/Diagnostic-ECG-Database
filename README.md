@@ -45,8 +45,17 @@
    
    O objetivo dessa classe é organizar o dicionário fields retornado pela Classe ReadFile, separando em informações do registro e informações do sinal que posteriormente vão ser salvas nos arquivos csvs. Um dos problemas do dicionário fields é que existe uma key chamada comments que é um dicionário em forma de lista. Logo os métodos dessa classe irão fazer a conversão dessa lista em dicionário e posteriormente juntar esse dicionário resultante com o fields. Ao final, as informações do dicionário, agora completo, irá ser separado em um dicionário com as infos do sinal e as infos do registro.
    
+   ### Classe ItemsSignal
+   ![image](https://user-images.githubusercontent.com/108739663/198153333-c941062e-ba75-4f16-a000-3a76ee47afff.png)
 
+   O objetivo dessa classe é apartir dos dados extraídos e organizados nas classes anteriores, extrair as caracteristicas do registro de ecg do paciente, desde o numero de amostras até o tempo de duração do registro. A classe ItemsSignal está conectada a classe Visualization, que será responsável por pegar essas informações extraídas pela ItemsSignals e realizar a visualização do registro.
+   
+   ### Classe Visualization 
+   ![image](https://user-images.githubusercontent.com/108739663/198157068-b2f2b01e-063d-4c08-bceb-830fd6e208ec.png)
+   ![image](https://user-images.githubusercontent.com/108739663/198157147-16451c65-7956-4c29-b169-26569446d623.png)
+   ![image](https://user-images.githubusercontent.com/108739663/198157184-db99c8a4-f4b6-47b6-ba5a-851e3cb19466.png)
 
+    Essa classe tem como objetivo extrair todas as informações possíveis dos dados que foram organizados, desde plots de tabelas de distribuição, histogramas, tabelas de informações dos pacientes até gráficos dos registros de ECG dos pacientes.
    
    
 

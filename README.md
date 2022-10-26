@@ -55,7 +55,7 @@
    ![image](https://user-images.githubusercontent.com/108739663/198157147-16451c65-7956-4c29-b169-26569446d623.png)
    ![image](https://user-images.githubusercontent.com/108739663/198157184-db99c8a4-f4b6-47b6-ba5a-851e3cb19466.png)
 
-    Essa classe tem como objetivo extrair todas as informações possíveis dos dados que foram organizados, desde plots de tabelas de distribuição, histogramas, tabelas de informações dos pacientes até gráficos dos registros de ECG dos pacientes.
+   Essa classe tem como objetivo extrair todas as informações possíveis dos dados que foram organizados, desde plots de tabelas de distribuição, histogramas, tabelas de informações dos pacientes até gráficos dos registros de ECG dos pacientes.
    
    
 

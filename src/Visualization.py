@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import random
 from src.ItemsSignal import ItemsSignal
+from src.Json import Json
 
 class Visualization:
   def __init__(self,csv,signal,idP,idS):

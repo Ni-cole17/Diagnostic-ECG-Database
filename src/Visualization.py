@@ -17,12 +17,12 @@ class Visualization:
         *idS (string): String Id signal 
 
     '''
-   self.base = pd.read_csv(csv)
-   self.idP = idP
-   self.idS = idS
-   self.signal = pd.read_csv(signal)
-   self.Items = ItemsSignal(self.base,self.idP,self.idS,self.signal) 
-    
+    self.base = pd.read_csv(csv)
+    self.idP = idP
+    self.idS = idS
+    self.signal = pd.read_csv(signal)
+    self.Items = ItemsSignal(self.base,self.idP,self.idS,self.signal) 
+      
   def Plot_Bar(self,column):
     '''
     This method returns a plot bar of a column from dataframe
@@ -47,60 +47,60 @@ class Visualization:
     return pd.DataFrame(self.base[column].value_counts())
 
   def plot_signal(self,Type):
-     '''
-    This method returns a Record ECG plotting 
+      '''
+      This method returns a Record ECG plotting 
 
-     INPUT
-        * Type plotting (string):
-          Type ('all') : Plotting one graph with all channels in the record
-         Type ('channels'): Plotting one graph with separate channels in the record
-    '''
-    t = self.Items.take_time()
-    sig = self.Items.take_signal()
+      INPUT
+          * Type plotting (string):
+            Type ('all') : Plotting one graph with all channels in the record
+          Type ('channels'): Plotting one graph with separate channels in the record
+      '''
+      t = self.Items.take_time()
+      sig = self.Items.take_signal()
 
-    if Type ==  'all':
-      figure, ax1 = plt.subplots(1, 1,figsize=(15,7))
-      ax1.plot(t, sig, linewidth=2)
-      ax1.set_title("Record " + str(self.idS) + ' Pacient ' + str(self.idP))
-      ax1.set_xlabel("Time(s)")
-      ax1.set_ylabel("Amplitude")
-      ax1.grid()
-      plt.figure (figsize=(18,9))
+      if Type ==  'all':
+        figure, ax1 = plt.subplots(1, 1,figsize=(15,7))
+        ax1.plot(t, sig, linewidth=2)
+        ax1.set_title("Record " + str(self.idS) + ' Pacient ' + str(self.idP))
+        ax1.set_xlabel("Time(s)")
+        ax1.set_ylabel("Amplitude")
+        ax1.grid()
+        plt.figure (figsize=(18,9))
 
-    elif Type == 'channels':
-      num_of_channels = sig.shape[1]
-      cs = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
-             for i in range(num_of_channels)]
-      plt.figure (figsize=(30,15))
-      count = 0
-      for i in range(num_of_channels):
-        current_color=cs[count]
-        plt.plot(t,sig[::,i]+(num_of_channels-count)*1,color=current_color,linewidth=1,label = 'channel'+ str(i))
-        plt.legend(labelspacing = 3)
-        count = count + 1
-      plt.title("Record " + str(self.idS) +  ' Pacient ' + str(self.idP))
-      plt.xlabel("Time(s)")
-      plt.ylabel("Amplitude")
-      plt.tight_layout()
+      elif Type == 'channels':
+        num_of_channels = sig.shape[1]
+        cs = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+              for i in range(num_of_channels)]
+        plt.figure (figsize=(30,15))
+        count = 0
+        for i in range(num_of_channels):
+          current_color=cs[count]
+          plt.plot(t,sig[::,i]+(num_of_channels-count)*1,color=current_color,linewidth=1,label = 'channel'+ str(i))
+          plt.legend(labelspacing = 3)
+          count = count + 1
+        plt.title("Record " + str(self.idS) +  ' Pacient ' + str(self.idP))
+        plt.xlabel("Time(s)")
+        plt.ylabel("Amplitude")
+        plt.tight_layout()
 
   def up_plot(self):
-     '''
-    This method returns a bidimensional plotting from ECG record 
-     '''
-    signal = self.Items.take_signal()
-    plt.figure(figsize=(18,9))
-    plt.imshow(signal.transpose(),aspect = 'auto',cmap= 'jet_r',origin = 'upper',resample= True)
-    plt.title("Record " + str(self.idS) + ' Pacient ' + str(self.idP))
-    plt.colorbar()
+      '''
+      This method returns a bidimensional plotting from ECG record 
+      '''
+      signal = self.Items.take_signal()
+      plt.figure(figsize=(18,9))
+      plt.imshow(signal.transpose(),aspect = 'auto',cmap= 'jet_r',origin = 'upper',resample= True)
+      plt.title("Record " + str(self.idS) + ' Pacient ' + str(self.idP))
+      plt.colorbar()
 
   def Vetocardiogram(self):
-    '''
-    This method returns a vectorcardiogram tridimensional plotting 
-    '''
-    signal = self.Items.take_signal()
-    vx = signal[:,12]
-    vy = signal[:,13]
-    vz = signal[:,14]
-    df = pd.DataFrame({"x": vx, "y":vy, "z":vz})
-    fig = px.line_3d(df,x ='x',y = 'y',z = 'z',title = "Record vectorcardiogram " + str(self.idS) + ' Pacient ' + str(self.idP))
-    fig.show()
+      '''
+      This method returns a vectorcardiogram tridimensional plotting 
+      '''
+      signal = self.Items.take_signal()
+      vx = signal[:,12]
+      vy = signal[:,13]
+      vz = signal[:,14]
+      df = pd.DataFrame({"x": vx, "y":vy, "z":vz})
+      fig = px.line_3d(df,x ='x',y = 'y',z = 'z',title = "Record vectorcardiogram " + str(self.idS) + ' Pacient ' + str(self.idP))
+      fig.show()

@@ -12,7 +12,18 @@ class ItemsSignal:
     self.idS = idS
     self.signal = signal
 
-  def Query(self,Data):
+ class ItemsSignal:
+  def __init__(self,base,idP,idS,signal):
+    '''
+    this class uses the same parameters as the
+    visualization class to extract the components from the ecg register for the pacient selected
+    '''
+    self.base = base
+    self.idP = idP
+    self.idS = idS
+    self.signal = signal
+
+  def Query_record(self,Data):
      '''
      This method returns the patient's data presents in the database
 
@@ -26,7 +37,7 @@ class ItemsSignal:
     This method returns the fs of the record
 
     '''
-    select = self.Query(self.signal)
+    select = self.Query_record(self.signal)
     fs = int(pd.Series(select.fs).values)
     return fs
 
@@ -34,7 +45,8 @@ class ItemsSignal:
     '''
     This method returns the array of the record
     '''
-    path = '/content/drive/MyDrive/Projeto-Tecnicas/Signals/'+ self.idP + '_'+ self.idS + '.txt'
+    select = self.Query_record(self.signal)
+    path = str(pd.Series(select.data_path).values[0])
     return np.loadtxt(path)
 
   def take_time(self):

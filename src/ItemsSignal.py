@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 class ItemsSignal:
    '''
    this class uses the same parameters as the

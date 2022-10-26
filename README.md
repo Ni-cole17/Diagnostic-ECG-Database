@@ -43,7 +43,8 @@
    ![image](https://user-images.githubusercontent.com/65842535/198136057-48aa9589-6700-42cb-876d-efae34f4ac6a.png)
    ![image](https://user-images.githubusercontent.com/65842535/198136195-c3bfefa4-d770-4d8c-a43d-2e27212f49eb.png)
    
-   O objetivo dessa classe é organizar o dicionário fields retornado pela Classe ReadFile, separando em informações do registro e informações do sinal que posteriormente vão ser salvas nos arquivos csvs. Um dos problemas do dicionário fields é que existe uma key chamada comments que é um dicionário em forma de lista, 
+   O objetivo dessa classe é organizar o dicionário fields retornado pela Classe ReadFile, separando em informações do registro e informações do sinal que posteriormente vão ser salvas nos arquivos csvs. Um dos problemas do dicionário fields é que existe uma key chamada comments que é um dicionário em forma de lista. Logo os métodos dessa classe irão fazer a conversão dessa lista em dicionário e posteriormente juntar esse dicionário resultante com o fields. Ao final, as informações do dicionário, agora completo, irá ser separado em um dicionário com as infos do sinal e as infos do registro.
+   
 
 
    

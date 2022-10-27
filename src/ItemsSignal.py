@@ -12,17 +12,6 @@ class ItemsSignal:
     self.idS = idS
     self.signal = signal
 
- class ItemsSignal:
-  def __init__(self,base,idP,idS,signal):
-    '''
-    this class uses the same parameters as the
-    visualization class to extract the components from the ecg register for the pacient selected
-    '''
-    self.base = base
-    self.idP = idP
-    self.idS = idS
-    self.signal = signal
-
   def Query_record(self,Data):
      '''
      This method returns the patient's data presents in the database

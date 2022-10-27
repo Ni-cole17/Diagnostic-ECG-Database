@@ -36,7 +36,8 @@ class Visualization:
                      "x": column,
                      "y": "count"},title = 'distribution '+ column)
 
-    fig.show()
+    
+    return fig
   
   def table_Distribution(self,column):
     '''

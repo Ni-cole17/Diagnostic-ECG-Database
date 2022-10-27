@@ -16,7 +16,8 @@ import wfdb
 import os
 import random
 import plotly.express as px
-import visu1
+from src.Visualization import Visualization
+from src.RecordsTime import RecordsTime
 import plotly.figure_factory as ff
 import re
 import json
@@ -63,11 +64,11 @@ st.sidebar.info(
 
 
 
-sig = "/content/Signal_info.csv"
-base = "/content/Record_info.csv"
+sig = "Signal_info.csv"
+base = "Record_info.csv"
 
-a = visu1.distr(base,sig)
-pac, rec, pac_rec = a.get_records_name()
+a = RecordsTime(base,sig)
+pac_rec = a.get_records_name()
 csv = pd.read_csv(base)
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -82,7 +83,7 @@ with t1:
      np.array(pac_rec)
    )
   x = (option1.split('-'))
-  Call_Class = visu1.Visualization(base,sig,x[0],x[1])
+  Call_Class = Visualization(base,sig,x[0],x[1])
   
   option0 = st.selectbox(
     'Escolha o tipo de visualização:',
@@ -114,11 +115,11 @@ with t1:
      ('Myocardial infarction', 'Healthy control', 'Cardiomyopathy', 'Bundle branch block', 'Dysrhythmia', 'Hypertrophy', 'Valvular heart disease', 'Myocarditis', 'Stable angina', 'Palpitation', 'Heart failure (NYHA 4)', 'Unstable angina', 'Heart failure (NYHA 2)', 'Heart failure (NYHA 3)'))
    
     option02 = st.selectbox(
-    'Escolha a classe:',
+    'Escolha os dados clínicos:',
      np.array(list(csv.columns)))
 
     option03 = st.selectbox(
-    'Escolha a classe:',
+    'Escolha o parâmetro:',
      np.array(list(csv[option02])))
 
     if option02 == 'todos':
@@ -152,4 +153,6 @@ with t1:
 
 #with t3:
  # st.subheader("Images selected by the algorithm:")
+
+
 
